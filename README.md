@@ -49,3 +49,14 @@ including varying selection volumes and the presence or absence of BTREE and HAS
 | With HASH index  | BTREE     | BTREE       | BTREE    | BTREE       | BTREE       | BTREE        |
 
 The values for HASH index refer to BTREE index results, as InnoDB silently changes HASH indexes into BTREE.
+
+### innodb_flush_log_at_trx_commit
+
+The impact of the innodb_flush_log_at_trx_commit value was assessed by measuring insert speed while varying this setting
+with different and different ops per second:
+
+|     | 10 / sec | 100 / sec | 250 / sec |
+|-----|----------|-----------|-----------|
+| = 0 | 0.032    | 0.243     | 0.651     |
+| = 1 | 0.038    | 0.257     | 0.686     |
+| = 2 | 0.034    | 0.248     | 0.667     |
